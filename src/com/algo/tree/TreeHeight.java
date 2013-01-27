@@ -12,26 +12,43 @@ public class TreeHeight {
     public static void main(String[] args)
     {
         TreeNode root=TreeBuilder.treeWithData();
-        System.out.println("Tree:"); printTree(root);
-        System.out.println("LeftHeight:"+leftTreeHeight(root));
+        System.out.println("MinDepth:"+ minDepth(root,""));
+        System.out.println("MaxDepth:"+ maxDepth(root,""));
+
 
     }
 
-    static void printTree(TreeNode node)
-    {
-      if(node==null)
-      {
-          return;
-      }
-      System.out.print(node.data);
-      printTree(node.leftNode);
-      printTree(node.rightNode);
 
+    static int minDepth(TreeNode node,String direction)
+    {
+        if(direction.equals("left")&&node.leftNode==null){
+            return 0;
+
+        }
+        if(direction.equals("right")&&node.rightNode==null)
+        {
+            return 0;
+        }
+        int leftDepth = 1 + minDepth(node.leftNode,"left");
+        int rightDepth = 1 + minDepth(node.rightNode,"right");
+
+        return leftDepth<=rightDepth?leftDepth:rightDepth;
     }
 
-    static int leftTreeHeight(TreeNode node)
+
+    static int maxDepth(TreeNode node,String direction)
     {
-        if(node.leftNode==null){return 0;}
-        return 1+leftTreeHeight(node.leftNode);
+        if(direction.equals("left")&&node.leftNode==null){
+            return 0;
+
+        }
+        if(direction.equals("right")&&node.rightNode==null)
+        {
+            return 0;
+        }
+        int leftDepth = 1 + maxDepth(node.leftNode,"left");
+        int rightDepth = 1 + maxDepth(node.rightNode,"right");
+
+        return leftDepth>rightDepth?leftDepth:rightDepth;
     }
 }
