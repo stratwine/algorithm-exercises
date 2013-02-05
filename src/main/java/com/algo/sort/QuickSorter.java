@@ -54,10 +54,13 @@ public class QuickSorter {
               leftPointer++;
               rightPointer--;
           }
+
         }
 
-        //rightPointer is the deciding factor to sort the rightList.
-        //if there are any elements to the left of rightPointer, then sort
+        //Now after the crossing over,
+        //we have two ranges
+        // low---rightPointer, leftPointer----high
+        //sort them again
 
         if(low<rightPointer)
         {
@@ -65,8 +68,6 @@ public class QuickSorter {
 
         }
 
-        //leftPointer is the deciding factor to sort the rightList
-        //if there are any elements to the right of leftPointer, then sort
 
         if(leftPointer<high)
         {

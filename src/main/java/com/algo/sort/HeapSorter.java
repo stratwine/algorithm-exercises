@@ -18,13 +18,12 @@ public class HeapSorter {
         //first element now contains the biggest number
         //move it to last.
 
-        int end=input.length-1;
+        int end = input.length - 1;
 
-        while(end>0)
-        {
+        while (end > 0) {
             //swap first element with last
-            exchange(input,0,end);
-            bubbleDown(input,0,end-1);
+            exchange(input, 0, end);
+            bubbleDown(input, 0, end - 1);
             end--;
         }
 
@@ -50,35 +49,31 @@ public class HeapSorter {
     }
 
     private void bubbleDown(Integer[] input, int start, int end) {
-      int root=start;
+        int root = start;
 
-        while(root*2+1<=end) // atleast one child exists
+        while (root * 2 + 1 <= end) // atleast one child exists
         {
-            int positionToSwap=root; //just a convenient assignment.
+            int positionToSwap = root; //just a convenient assignment.
 
-            int lChild=root*2+1;
-            int rChild=root*2+2;
+            int lChild = root * 2 + 1;
+            int rChild = root * 2 + 2;
 
             // find what is to be swapped with the root
             // the left child or the right child or none
 
-            if (input[lChild]>input[root])
-            {
-               positionToSwap=lChild;
+            if (input[lChild] > input[root]) {
+                positionToSwap = lChild;
             }
 
-            if(rChild<=end && input[rChild]>input[positionToSwap])
-            {
+            if (rChild <= end && input[rChild] > input[positionToSwap]) {
                 //override and make this rChild the new swap
-                positionToSwap=rChild;
+                positionToSwap = rChild;
             }
 
             // if lChild or rChild is bigger, then do that swap
-            if(positionToSwap!=root)
-            {
-               exchange(input,root,positionToSwap);
-            }
-            else{
+            if (positionToSwap != root) {
+                exchange(input, root, positionToSwap);
+            } else {
                 return;
             }
 
@@ -86,9 +81,9 @@ public class HeapSorter {
     }
 
     private void exchange(Integer[] input, int root, int positionToSwap) {
-        int temp=input[root];
-        input[root]=input[positionToSwap];
-        input[positionToSwap]=temp;
+        int temp = input[root];
+        input[root] = input[positionToSwap];
+        input[positionToSwap] = temp;
     }
 
 
